@@ -3,24 +3,21 @@
 namespace aciden\receivData;
 
 use aciden\receivData\FtpUpload;
-use aciden\receivData\FileHandler;
+use aciden\receivData\FetchDataFile;
 
 class ReceivData extends \yii\base\Component
 {
     public $ftpPasv = true;
+    public $clear = true;
 
     private $_uploadFilePath = '';
-    private $_file;
     private $_loadFile;
-    private $_data = [];
+    private $_fetchData;
 
-    
-    public function init($uploadFilePath, $fileName, $arcName = null)
-    {
-        parent::init();
-        
-        $this->_loadFile = $arcName ? $arcName : $fileName;
-        $this->_uploadFilePath = $uploadFilePath;
+    public function initialise($fileName, $uploadFilePath = null)
+    {        
+        $this->_loadFile = $fileName;
+        $this->_uploadFilePath = $uploadFilePath ? $uploadFilePath : $this->_uploadFilePath;
     }
 
     public function uploadFtp($host, $login, $pas, $ftpPath)
@@ -30,13 +27,38 @@ class ReceivData extends \yii\base\Component
         
     }
     
-    public function fetch(array $assoc = [])
+    public function fecthPreload($startLine, $numLoadLine, $separator = null)
     {
-        $data = new FileHandler($this->_uploadFilePath . '/' . $this->_loadFile);
+        $this->_fetchData = new FetchDataFile($this->_uploadFilePath . '/' . $this->_loadFile, $startLine, $numLoadLine, $separator);
+        
+        return $this->_fetchData->getData();
     }
 
-    public function setData($data)
+    public function fetchRow($separator = null)
     {
-        $this->_data = $data;
+        $this->_fetchData = new FetchDataFile($this->_uploadFilePath . '/' . $this->_loadFile, 0, 10, $separator);
+        
+        return $this->_fetchData->getData();
+    }
+    
+    public function fetchAssoc(array $assoc, $separator = null)
+    {
+        $this->_fetchData = new FetchDataFile($this->_uploadFilePath . '/' . $this->_loadFile, 0, 0, $separator, $assoc);
+        
+        return $this->_fetchData->getData();
+    }
+    
+    public function __destruct()
+    {        
+        if ($this->clear && file_exists(__DIR__ . '/' . $this->_uploadFilePath . '/' . $this->_loadFile)) {
+            
+            unlink(__DIR__ . '/' .$this->_uploadFilePath . '/' . $this->_loadFile);
+            
+            echo 'Clear';
+            
+        } else {
+            
+            echo 'Not clear';
+        }
     }
 }
