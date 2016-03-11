@@ -16,7 +16,8 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-	"phpoffice/phpexcel": "*"
+	"phpoffice/phpexcel": "*",
+        "yii2mod/yii2-ftp": "*"
     },
     "autoload": {
         "psr-4": {

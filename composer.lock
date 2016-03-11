@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ce5011506a27232f125cb37028011d46",
-    "content-hash": "c4a035c3a638639f946656d3e3cd55ab",
+    "hash": "dbb5153528adc876a0e34e7537dba899",
+    "content-hash": "aae20723061a83007d39d2e263fe39bb",
     "packages": [
         {
             "name": "bower-asset/jquery",
@@ -306,6 +306,48 @@
                 "xlsx"
             ],
             "time": "2015-05-01 07:00:55"
+        },
+        {
+            "name": "yii2mod/yii2-ftp",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yii2mod/yii2-ftp.git",
+                "reference": "3bc4be07707f2e6eb9c9a42e5fc629c9604ec96f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yii2mod/yii2-ftp/zipball/3bc4be07707f2e6eb9c9a42e5fc629c9604ec96f",
+                "reference": "3bc4be07707f2e6eb9c9a42e5fc629c9604ec96f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "yii2mod\\ftp\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A flexible FTP and SSL-FTP client for PHP. This lib provides helpers easy to use to manage the remote files.",
+            "keywords": [
+                "extension",
+                "file",
+                "ftp",
+                "helper",
+                "lib",
+                "server",
+                "sftp",
+                "ssl",
+                "ssl-ftp",
+                "yii2"
+            ],
+            "time": "2014-12-22 09:04:48"
         },
         {
             "name": "yiisoft/yii2",
