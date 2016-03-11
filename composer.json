@@ -4,7 +4,6 @@
     "keywords": ["yii2", "receiv"],
     "type": "yii2-extension",
     "license": "MIT",
-    "version": "1.0.0",
     "support": {
         "source": "https://github.com/aciden/receiv-data",
 	"issues": "https://github.com/aciden/receiv-data/issues"
