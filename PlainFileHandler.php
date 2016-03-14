@@ -66,11 +66,7 @@ class PlainFileHandler
     }
     
     public function setData(array $data)
-    {
-        
-        var_dump($data);
-        exit;
-        
+    {        
         $this->_data = $data;
     }
     
