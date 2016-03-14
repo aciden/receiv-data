@@ -40,7 +40,10 @@ class ExcelFileHandler
                     
                     if (! empty($assoc)) {
                         $key = PHPExcel_Cell::columnIndexFromString($cell->getColumn());
-                        $item[$assoc[$key]] = trim($cell->getValue());
+                        
+                        if (! empty($assoc[$key])) {
+                            $item[$assoc[$key]] = trim($cell->getValue());
+                        }
                     } else {
                         $item[] = trim($cell->getValue());
                     }

@@ -34,16 +34,16 @@ class ReceivData extends \yii\base\Component
         return $this->_fetchData->getData();
     }
 
-    public function fetchRow($separator = null)
+    public function fetchRow($startLine = 1, $separator = null)
     {
-        $this->_fetchData = new FetchDataFile($this->_uploadFilePath . '/' . $this->_loadFile, 0, 10, $separator);
+        $this->_fetchData = new FetchDataFile($this->_uploadFilePath . '/' . $this->_loadFile, $startLine, 20, $separator);
         
         return $this->_fetchData->getData();
     }
     
-    public function fetchAssoc(array $assoc, $separator = null)
+    public function fetchAssoc(array $assoc, $startLine = 1, $separator = null)
     {
-        $this->_fetchData = new FetchDataFile($this->_uploadFilePath . '/' . $this->_loadFile, 0, 0, $separator, $assoc);
+        $this->_fetchData = new FetchDataFile($this->_uploadFilePath . '/' . $this->_loadFile, $startLine, 0, $separator, $assoc);
         
         return $this->_fetchData->getData();
     }
@@ -52,13 +52,7 @@ class ReceivData extends \yii\base\Component
     {        
         if ($this->clear && file_exists(__DIR__ . '/' . $this->_uploadFilePath . '/' . $this->_loadFile)) {
             
-            unlink(__DIR__ . '/' .$this->_uploadFilePath . '/' . $this->_loadFile);
-            
-            echo 'Clear';
-            
-        } else {
-            
-            echo 'Not clear';
+            unlink(__DIR__ . '/' .$this->_uploadFilePath . '/' . $this->_loadFile);   
         }
     }
 }

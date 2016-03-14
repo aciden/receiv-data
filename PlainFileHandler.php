@@ -44,13 +44,16 @@ class PlainFileHandler
                     
                     if (! empty($assoc)) {
                         
-                        $item[$assoc[$key + 1]] = trim($cell);
+
+                        if (! empty($assoc[$key + 1])) {
+                            $item[$assoc[$key + 1]] = trim($cell);
+                        }
                         
                     } else {
                         $item[] = trim($cell);
                     }
                 }
-                                
+                     
                 array_push($array, $item);
                 $i++;
             }
@@ -63,7 +66,11 @@ class PlainFileHandler
     }
     
     public function setData(array $data)
-    {        
+    {
+        
+        var_dump($data);
+        exit;
+        
         $this->_data = $data;
     }
     
