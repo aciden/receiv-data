@@ -36,10 +36,11 @@ class ExcelFileHandler
                 $cellIterator = $row->getCellIterator();
                 
                 $item = [];
+                $key = 1;
                 foreach ($cellIterator as $cell) {
                     
                     if (! empty($assoc)) {
-                        $key = PHPExcel_Cell::columnIndexFromString($cell->getColumn());
+                        //$key = PHPExcel_Cell::columnIndexFromString($cell->getColumn());
                         
                         if (! empty($assoc[$key])) {
                             $item[$assoc[$key]] = trim($cell->getValue());
@@ -47,6 +48,8 @@ class ExcelFileHandler
                     } else {
                         $item[] = trim($cell->getValue());
                     }
+                    
+                    $key++;
                 }
                 
                 array_push($array, $item);
