@@ -34,6 +34,7 @@ class ExcelFileHandler
                     break;
                 }                
                 $cellIterator = $row->getCellIterator();
+                $cellIterator->setIterateOnlyExistingCells(false);
                 
                 $item = [];
                 $key = 1;
